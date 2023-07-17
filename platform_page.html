@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<script src="viewport-units-buggyfill.js"></script>
+<html>
+
+<head>
+  <title>Hiradayon Partylist</title>
+  <script>
+    window.onload = function () {
+      Particles.init({
+        selector: ".background"
+      });
+    };
+    const particles = Particles.init({
+      selector: ".background",
+      color: ["#03dac6", "#ff0266", "#000000"],
+      connectParticles: true,
+      responsive: [
+        {
+          breakpoint: 768,
+          options: {
+            color: ["#faebd7", "#03dac6", "#ff0266"],
+            maxParticles: 43,
+            connectParticles: false
+          }
+        }
+      ]
+    });
+
+    class NavigationPage {
+      constructor() {
+        this.currentId = null;
+        this.currentTab = null;
+        this.tabContainerHeight = 70;
+        this.lastScroll = 0;
+        let self = this;
+        $(".nav-tab").click(function () {
+          self.onTabClick(event, $(this));
+        });
+        $(window).scroll(() => {
+          this.onScroll();
+        });
+        $(window).resize(() => {
+          this.onResize();
+        });
+      }
+
+      onTabClick(event, element) {
+        event.preventDefault();
+        let scrollTop =
+          $(element.attr("href")).offset().top - this.tabContainerHeight + 1;
+        $("html, body").animate({ scrollTop: scrollTop }, 600);
+      }
+
+      onScroll() {
+        this.checkHeaderPosition();
+        this.findCurrentTabSelector();
+        this.lastScroll = $(window).scrollTop();
+      }
+
+      onResize() {
+        if (this.currentId) {
+          this.setSliderCss();
+        }
+      }
+
+      checkHeaderPosition() {
+        const headerHeight = 75;
+        if ($(window).scrollTop() > headerHeight) {
+          $(".nav-container").addClass("nav-container--scrolled");
+        } else {
+          $(".nav-container").removeClass("nav-container--scrolled");
+        }
+        let offset =
+          $(".nav").offset().top +
+          $(".nav").height() -
+          this.tabContainerHeight -
+          headerHeight;
+        if (
+          $(window).scrollTop() > this.lastScroll &&
+          $(window).scrollTop() > offset
+        ) {
+          $(".nav-container").addClass("nav-container--move-up");
+          $(".nav-container").removeClass("nav-container--top-first");
+          $(".nav-container").addClass("nav-container--top-second");
+        } else if (
+          $(window).scrollTop() < this.lastScroll &&
+          $(window).scrollTop() > offset
+        ) {
+          $(".nav-container").removeClass("nav-container--move-up");
+          $(".nav-container").removeClass("nav-container--top-second");
+          $(".nav-container-container").addClass("nav-container--top-first");
+        } else {
+          $(".nav-container").removeClass("nav-container--move-up");
+          $(".nav-container").removeClass("nav-container--top-first");
+          $(".nav-container").removeClass("nav-container--top-second");
+        }
+      }
+
+      findCurrentTabSelector(element) {
+        let newCurrentId;
+        let newCurrentTab;
+        let self = this;
+        $(".nav-tab").each(function () {
+          let id = $(this).attr("href");
+          let offsetTop = $(id).offset().top - self.tabContainerHeight;
+          let offsetBottom =
+            $(id).offset().top + $(id).height() - self.tabContainerHeight;
+          if (
+            $(window).scrollTop() > offsetTop &&
+            $(window).scrollTop() < offsetBottom
+          ) {
+            newCurrentId = id;
+            newCurrentTab = $(this);
+          }
+        });
+        if (this.currentId != newCurrentId || this.currentId === null) {
+          this.currentId = newCurrentId;
+          this.currentTab = newCurrentTab;
+          this.setSliderCss();
+        }
+      }
+
+      setSliderCss() {
+        let width = 0;
+        let left = 0;
+        if (this.currentTab) {
+          width = this.currentTab.css("width");
+          left = this.currentTab.offset().left;
+        }
+        $(".nav-tab-slider").css("width", width);
+        $(".nav-tab-slider").css("left", left);
+      }
+    }
+
+    new NavigationPage();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    @font-face {
+      font-family: ModAmp;
+      src: url('Modular Amplitude.otf') format('opentype');
+    }
+
+    @font-face {
+      font-family: smcChicago;
+      src: url('smcchicago.ttf') format('truetype');
+    }
+
+    @font-face {
+      font-family: MazeRunner;
+      src: url('MAZE RUNNER.otf') format('opentype');
+    }
+
+    @font-face {
+      font-family: LemonMilkLight;
+      src: url('LEMONMILK-Light.otf') format('opentype');
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      display: absolute;
+    }
+
+    .bg {
+      background-image: url("bg2.png");
+      height: 100%;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    div.b {
+      vertical-align: middle;
+      justify-content: center;
+      position: relative;
+      background-size:cover;
+      background: linear-gradient(0deg, rgba(0, 0, 0, 0.6) 60%, rgba(255, 255, 255, 0) 100%);
+      overflow:hidden;
+      height: 799px;
+      align-items: flex-end;
+      justify-content: center;
+      width:100%;
+
+
+    }
+
+    .video_border {
+      position: grid;
+      vertical-align: middle;
+      align-items: center;
+      box-shadow: 0 0 9px 0 #ff005d inset, 0 0 10px 4px #d900ff;
+      height: 360;
+      width: 660;
+    }
+
+.wrapper{
+  vertical-align: middle;
+  justify-content: center;
+  position:relative;
+  overflow: hidden;
+  padding-top: 56.25%;
+
+}
+
+.wrapper iframe{
+  justify-content: center;
+  position: absolute;
+  top: 0%;
+  left: 10%;
+  right: 0%;
+  bottom: 0%;
+  height: 80%;
+  width: 80%;
+}
+
+
+
+    div.c {
+      overflow: hidden;
+      background-color: #1E1E1E;
+      text-align: right;
+    }
+
+    div.d {
+      text-align: center;
+      vertical-align: middle;
+      justify-content: center;
+    }
+
+    @supports (-webkit-text-stroke: 1px black) {
+      h1 {
+        -webkit-text-stroke: 1px black;
+      }
+    }
+
+    h1 {
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+      font-family: "ModAmp", sans-serif;
+      color: rgba(255, 255, 255, 0.0);
+      font-size: 3.5em;
+      text-shadow: 0 0 10px rgb(140, 0, 255);
+      -webkit-text-stroke-width: .01px;
+      -webkit-text-stroke-color: rgb(255, 112, 229);
+      position: relative;
+      z-index: 1;
+      transition: all 0.3s ease-in-out;
+    }
+
+    h1:hover {
+      text-shadow:
+        -2px -2px 2px rgb(140, 0, 255),
+        2px -2px 2px rgb(140, 0, 255),
+        -2px 2px 2px rgb(140, 0, 255),
+        2px 2px 2px rgb(140, 0, 255);
+    }
+
+    h2 {
+      text-align: center;
+      font-family: "LemonMilkLight";
+      color: #ffffff;
+      text-shadow: 0 0 10px #ef93ff;
+      font-size: 1.8em;
+    }
+
+    .topbar:link,
+    .topbar:visited {
+      font-family: "LemonMilkLight";
+      background-color: #1E1E1E;
+      color: white;
+      padding: 10px 10px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .topbar:hover,
+    .topbar:active {
+      font-family: "LemonMilkLight";
+      transition: all 150ms ease-in-out;
+      background-color: #616161;
+      color: #1E1E1E;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+    }
+
+    .overlay.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .content {
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 20px;
+    }
+
+    .special-link {
+      font-family: "MazeRunner";
+      position: relative;
+      display: inline-block;
+      color: #fff;
+      font-size: 16px;
+      padding: 10px 20px;
+      background-color: rgba(255, 0, 111, 0.4);
+      border-radius: 4px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .special-link::before {
+      font-family: "MazeRunner";
+      position: absolute;
+      top: 50%;
+      right: -20px;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+      background-color: rgba(0, 0, 0, 0.3);
+      border-radius: 50%;
+      transition: all 0.3s ease;
+    }
+
+    .special-link:hover {
+      padding-right: 40px;
+    }
+
+    .special-link:hover::before {
+      background-color: #ff0266;
+    }
+
+    .special-link:hover::after {
+      content: " >> ";
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-weight: bold;
+      color: #fbfbfb;
+    }
+
+    a:hover,
+    a:active {
+      font-family: "MazeRunner";
+    }
+
+    p{
+
+text-align: center;
+align-items: center;
+justify-content: center;
+font-family: "ModAmp", sans-serif;
+color: rgba(255, 255, 255, 1);
+font-size: 3em;
+text-shadow: 0 0 10px rgb(140, 0, 255);
+-webkit-text-stroke-width: .01px;
+-webkit-text-stroke-color: rgb(255, 112, 229);
+position: relative;
+z-index: 1;
+transition: all 0.3s ease-in-out;
+}
+p:hover{
+  animation: glitch 1.7s infinite;
+}
+
+@keyframes glitch {
+  2.5%, 5%, 7.5%, 10%, 15% {
+    transform: skew(-5deg);
+    color: rgb(0, 102, 255);
+  }
+
+  2.3%, 4.7%, 7.3%, 9.7%, 14.3% {
+    transform: skew(5deg);
+    color: rgb(34, 255, 0);
+  }
+
+  12.5%, 17.5% {
+    transform: skew(0deg);
+    color: rgb(0, 255, 238);
+  }
+}2px 2px rgb(140, 0, 255);
+  </style>
+</head>
+
+<body class="bg">
+<div class="b">
+  <div class="c">
+    <a href="mainpage_backup.html" class = "topbar">HOME</a>
+    <a href="https://www.facebook.com/universidaddedagupan" class="topbar">UDD</a>
+    <a href="https://www.facebook.com/UdDSSC" class="topbar">SSC</a>
+  </div>
+  <br>
+  <p class="glitch-effect">Hiradayon Partylist</p>
+  <h2>PLATFORMS</h2>
+
+  <div class="wrapper">
+    <br>
+    <iframe src="https://drive.google.com/file/d/1XeVe-_ecKPnk6YlTtvm3OUALh-eFwCsA/preview" width="1000" height="563" allow="autoplay" allowfullscreen></iframe><br>
+    <br>
+  </div>
+  <style>
+
+
+    @keyframes glitch {
+      2.5%, 5%, 7.5%, 10%, 15% {
+        transform: skew(-5deg);
+        color: rgb(0, 128, 255);
+      }
+
+      2.3%, 4.7%, 7.3%, 9.7%, 14.3% {
+        transform: skew(5deg);
+        color: rgb(0, 255, 4);
+      }
+
+      12.5%, 17.5% {
+        transform: skew(0deg);
+        color: rgb(255, 0, 72);
+      }
+    }
+  </style>
+</div>
+</body>
+</html>
+<script>window.viewportUnitsBuggyfill.init();</script>

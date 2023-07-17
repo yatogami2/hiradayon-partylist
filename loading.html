@@ -1,0 +1,75 @@
+<html>
+  <title>Loading..</title>
+  <link href="fade_script.css" rel="stylesheet">
+  <script type="text/javascript">
+setTimeout(function() {
+  if (location.href.indexOf('loading.html') != -1)
+    location.replace("mainpage_backup.html");
+}, 4000);
+    </script>
+  <body onload="redirect();">
+    <div class="progress">
+      <div class="color"></div>
+    </div>
+  </body>
+
+<style>
+@font-face {
+        font-family: ModAmp;
+        src: url('Modular Amplitude.otf')  format('opentype');
+    }
+
+p {
+  font-family: ModAmp;
+  color: #ffffff;
+}
+
+
+body{
+    position: absolute;
+    top: 50%;
+    right: 75%;
+    transform: translate(-50%,-50%);
+    background-color: #1E1E1E;
+}
+.progress{
+    position: relative;
+    height: 10px;
+    width: 1110%;
+    border: 20px solid #1E1E1E;
+    border-radius: 15px;
+}
+.progress .color{
+    position: absolute;
+    background-color: #ffffff;
+    width: 0px;
+    height: 10px;
+    border-radius: 15px;
+    animation: progres 4s infinite linear;
+}
+@keyframes progres{
+    0%{
+      width: 0%;
+    }
+    25%{
+        width: 50%;
+    }
+    50%{
+        width: 75%;
+    }
+    75%{
+        width: 85%;
+    }
+    100%{
+        width: 100%;
+    }
+
+};
+</style>
+
+<script defer src = "node_modules/swup/dist/Swup.modern.js"></script>
+<script defer src = "fade_script.js"></script>
+<main id="swup" class="transition-fade"></main>
+<p>Loading...</p>
+
+</html>

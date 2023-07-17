@@ -1,0 +1,229 @@
+
+@font-face {
+  font-family: ModAmp;
+  src: url('Modular Amplitude.otf') format('opentype');
+}
+
+@font-face {
+  font-family: smcChicago;
+  src: url('smcchicago.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: MazeRunner;
+  src: url('MAZE RUNNER.otf') format('opentype');
+}
+
+@font-face {
+  font-family: LemonMilkLight;
+  src: url('LEMONMILK-Light.otf') format('opentype');
+}
+
+@font-face {
+  font-family: LemonMilkMedium;
+  src: url('LEMONMILK-Medium.otf') format('opentype');
+}
+
+body {
+
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+
+  min-height: 100vh;
+}
+
+img[alt="candid_icon"] {
+  border-radius: 30em;
+  width: 20%;
+  display: block;
+  margin: 0 auto;
+}
+
+.icon-container {
+  width: 100px; /* Set the container width and height to match your icon size */
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 10px rgba(255, 0, 115, 0.1); /* Adjust the shadow properties as needed */
+  border-radius: 50%; /* To create a circle effect */
+}
+
+/* Styles for the icon */
+.icon-container img {
+  width: 100%; /* Ensure the icon fits inside the container */
+  height: 100%;
+  border-radius: 50%; /* Keep the image as a circle if the icon is not already circular */
+}
+
+
+div.b {
+  overflow: hidden;
+  background-color: #1E1E1E;
+  text-align: left;
+}
+
+.topbar:link,
+.topbar:visited {
+  font-family: "LemonMilkLight";
+  background-color: #1E1E1E;
+  color: white;
+  padding: 10px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.topbar:hover,
+.topbar:active {
+  font-family: "LemonMilkLight";
+  transition: all 150ms ease-in-out;
+  background-color: #616161;
+  color: #1E1E1E;
+}
+
+.overlay {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.overlay.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.content {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+}
+
+.special-link {
+  font-family: "MazeRunner";
+  position: relative;
+  display: inline-block;
+  color: #fff;
+  font-size: 16px;
+  padding: 10px 20px;
+  background-color: rgba(255, 0, 111, 0.4);
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.special-link::before {
+  font-family: "MazeRunner";
+  position: absolute;
+  top: 50%;
+  right: -20px;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.special-link:hover {
+  padding-right: 40px;
+}
+
+.special-link:hover::before {
+  background-color: #ff0266;
+}
+
+.special-link:hover::after {
+  content: " >> ";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-weight: bold;
+  color: #fbfbfb;
+}
+
+a:hover,
+a:active {
+  font-family: "MazeRunner";
+}
+
+.background-image {
+  background-image: url('bg2.png');
+  background-size: cover;
+  background-position: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+
+.c {
+  position: absolute;
+  background-color: #1E1E1E;
+  color: white;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  max-width: 800px;
+}
+
+
+.c table {
+  text-align: center;
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+/* Optional styling for table cells and borders */
+.c th, .c td {
+  border: 1px solid rgb(255, 0, 157);
+  box-shadow: 0 0 10px rgba(183, 0, 255, 0.3);
+  padding: 8px;
+}
+
+/* CV heading */
+h1 {
+  font-family: "MazeRunner", sans-serif;
+  font-size: 32px;
+  margin-bottom: 10px;
+  text-shadow: 0 0 10px rgb(136, 0, 255);
+}
+
+h2 {
+  font-family: "LemonMilkMedium", sans-serif;
+  font-size: 23px;
+  margin-top: 20px;
+  text-shadow: 0 0 10px rgb(136, 0, 255);
+}
+
+p {
+  font-size: 16px;
+  font-family: "LemonMilkLight", sans-serif;
+}
+
+ul {
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+li {
+  margin-bottom: 5px;
+}
+
