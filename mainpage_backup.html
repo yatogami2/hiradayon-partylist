@@ -326,6 +326,19 @@
       transition: all 0.3s ease;
     }
 
+    .special-link2 {
+      font-family: "MazeRunner";
+      position: relative;
+      display: inline-block;
+      color: #fff;
+      font-size: 16px;
+      padding: 10px 20px;
+      background-color: rgba(81, 0, 255, 0.4);
+      border-radius: 4px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
     .special-link::before {
       font-family: "MazeRunner";
       position: absolute;
@@ -348,6 +361,36 @@
     }
 
     .special-link:hover::after {
+      content: " >> ";
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-weight: bold;
+      color: #fbfbfb;
+    }
+
+    .special-link2::before {
+      font-family: "MazeRunner";
+      position: absolute;
+      top: 50%;
+      right: -20px;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+      background-color: rgba(0, 0, 0, 0.3);
+      border-radius: 50%;
+      transition: all 0.3s ease;
+    }
+
+    .special-link2:hover {
+      padding-right: 40px;
+    }
+
+    .special-link2:hover::before {
+      background-color: #ff0266;
+    }
+
+    .special-link2:hover::after {
       content: " >> ";
       position: absolute;
       top: 50%;
@@ -408,7 +451,7 @@ p:hover{
   <p class="glitch-effect">Hiradayon Partylist</p>
   <h2>"Ipagpatuloy ang minsang nasimulan"</h2><br>
   <center><a href="candidatewheel.html" class="special-link">CANDIDATES </a>
-  <a href="platform_page.html" class="special-link">PLATFORMS </a></center>
+  <a href="platform_page.html" class="special-link2">PLATFORMS </a></center>
     <br>
     <div class = "wrapper">
 <iframe src="https://drive.google.com/file/d/1EDdY13w34MIbswTyjeT4KZt_6sbw6QsW/preview" allow="autoplay" class="video_border" allowfullscreen></iframe>
